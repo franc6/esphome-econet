@@ -357,6 +357,7 @@ void Econet::read_buffer_(int bytes_available) {
     rx_message_.push_back(byte);
     uint32_t pos = rx_message_.size() - 1;
     if ((pos == DST_ADR_POS || pos == SRC_ADR_POS) && byte != 0x80) {
+      ESP_LOGD(TAG, "Cleared message: pos: 0x%02X byte: 0x%02X", pos, byte);
       rx_message_.clear();
       continue;
     }
@@ -366,6 +367,13 @@ void Econet::read_buffer_(int bytes_available) {
       // We have a full message
       this->parse_rx_message_();
       rx_message_.clear();
+    }
+    else if (rx_message_.empty()) {
+      ESP_LOGD(TAG, "No message to parse");
+    }
+    else {
+      ESP_LOGD(TAG, "Message is the wrong size: %d rx_message_[LEN_POS]: 0x%02X", rx_message_.size(), rx_message_[LEN_POS]);
+    }
     }
   }
 }
