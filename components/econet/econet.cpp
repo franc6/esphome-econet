@@ -374,7 +374,6 @@ void Econet::read_buffer_(int bytes_available) {
     else {
       ESP_LOGD(TAG, "Message is the wrong size: %d rx_message_[LEN_POS]: 0x%02X", rx_message_.size(), rx_message_[LEN_POS]);
     }
-    }
   }
 }
 
