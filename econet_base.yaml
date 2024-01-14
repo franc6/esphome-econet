@@ -7,8 +7,8 @@ substitutions:
   rx_pin: GPIO22
   platform: esp32
   board: esp32dev
-  github_ref: main
-  external_components_source: github://esphome-econet/esphome-econet@${github_ref}
+  github_ref: test
+  external_components_source: github://franc6/esphome-econet@${github_ref}
   logger_level: WARN
   econet_update_interval: 30s
   econet_alarm_update_interval: 30s
